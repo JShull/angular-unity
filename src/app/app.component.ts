@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, NgZone, ViewChild } from '@angular/core';
 import { PlatformLocation } from '@angular/common';
 
 @Component({
@@ -24,5 +24,10 @@ export class AppComponent {
 
   send(objectName: string, methodName: string, messageValue?: any) {
     this.unityView.sendMessageToUnity(objectName, methodName, messageValue);
+  }
+
+  data(objectName: string, methodName: string){
+    var v1 = (<HTMLInputElement>document.getElementById("jsonReturn")).value;
+    this.unityView.sendMessageToUnity(objectName,methodName,v1);
   }
 }
